@@ -1,0 +1,254 @@
+@font-face {
+  font-family: f-g;
+  src: url("../fonts/FoundersGrotesk-Regular.cba3d1402a047a8fbae5e27611d6d157.woff2");
+}
+
+@font-face {
+  font-family: Respira;
+  src: url("../fonts/Respira-Black.80898f4a8e415d3b1f3725688a69cf05.woff2");
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  font-size: 15px;
+}
+
+:root {
+  --bg-color: #000;
+  --color-text: #efebe7;
+  --text: 23px;
+  --title: 70px;
+  --main-padding: 0 1.5rem 0 1.5rem;
+  --primary-curve: cubic-bezier(0.62, 0.05, 0.01, 0.99);
+}
+
+/*============================== CUSTOM CURSOR ======================*/
+.cursor {
+  position: fixed;
+  background: white;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  z-index: 1;
+  transition: 0.8s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+    0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity;
+  user-select: none;
+  pointer-events: none;
+  transform: scale(0.8);
+}
+
+.cursor::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  background-image: url("../images/cursor.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 100%;
+  opacity: 0;
+}
+
+.cursor.active {
+  opacity: 1;
+  transform: scale(14);
+}
+
+.cursor.active::before {
+  opacity: 1;
+}
+
+.cursor-follower {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  z-index: 1;
+  transition: 0.8s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform,
+    0.4s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity;
+  user-select: none;
+  pointer-events: none;
+  transform: translate(4px, 4px);
+}
+
+.cursor-follower.active {
+  opacity: 0.3;
+  transform: scale(0);
+}
+
+html,
+body {
+  background-color: var(--bg-color);
+  font-family: f-g;
+  color: var(--color-text);
+  height: 100%;
+  cursor: none;
+}
+
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: gray;
+  z-index: 100000000000;
+  transform: translateY(100%);
+}
+
+.container {
+  padding: 1.5rem;
+}
+
+.App {
+  width: 100%;
+  overflow: hidden;
+}
+
+.co-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+}
+
+.co-header nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.co-nav {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 1rem;
+}
+
+/*==================HERO================*/
+.co-hero-navigation-links {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  padding: var(--main-padding);
+  overflow: hidden;
+  padding-bottom: 4rem;
+  z-index: 0;
+}
+
+.item-left {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.co-projects-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.co-projects-links li {
+  overflow: hidden;
+}
+
+.link-navigation {
+  font-family: Respira;
+  font-size: var(--title);
+  white-space: nowrap;
+  cursor: none;
+  display: inline-block;
+  transform: translateY(100%);
+  transition: all 1s var(--primary-curve);
+
+  opacity: 0;
+}
+
+.link-navigation.active {
+  color: gray;
+}
+
+.item-right {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.box-imgHero {
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 5px;
+  position: relative;
+}
+
+.box-imgHero .img1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  opacity: 0.5;
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+  transition: all 1s var(--primary-curve);
+}
+
+.box-imgHero .img-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.footer-hero {
+  position: absolute;
+  bottom: 0;
+  font-size: 12px;
+}
+
+/*======================== ABOUT SECTION PAGE ====================*/
+
+.co-about {
+  padding: var(--main-padding);
+  padding-top: 6rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.text-about-me {
+  font-size: var(--text);
+  grid-column: 3/8;
+}
+
+.social-media {
+  grid-column: 9/10;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
